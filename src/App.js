@@ -18,7 +18,7 @@ const [wordSubmitted, setWordSubmitted] =useState('avocado');
 
 useEffect(() => {
 getData();
-}, [wordSubmitted])
+},[wordSubmitted])
 
 async function getData() {
   const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${wordSubmitted}&app_id=${MY_ID}&app_key=${MY_KEY}`);
@@ -59,7 +59,7 @@ console.log(data)
 <form onSubmit={finalSearch} className='containerSearch'>
     <input className='search' placeholder='Search...' onChange={myRecipeSearch} value={mySearch}>
     </input>
-    <button onClick={finalSearch}>
+    <button >
         <img src='https://img.icons8.com/external-prettycons-flat-prettycons/512/external-search-travel-prettycons-flat-prettycons.png'  className='icon' alt='icon'/>
     </button>
 </form>
@@ -70,8 +70,8 @@ console.log(data)
 
 
 
- {myRecipes.map((element,id) => (
-    <MyRecipesComponent key={id}
+ {myRecipes.map((element,index) => (
+    <MyRecipesComponent key={index}
     label={element.recipe.label} 
     image={element.recipe.image} 
     calories={element.recipe.calories}
